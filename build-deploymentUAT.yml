@@ -1,0 +1,20 @@
+name: Deploy to UAT
+
+on:
+  push:
+    branches: [ UAT ]
+    
+
+jobs:
+  install-and-deploy:
+    runs-on: sdp-ff708-Frontier-FrontierWallBoardMobile
+    environment:
+      name: UAT
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
+      - name: Build
+        run: |
+          
+          Invoke-Expression "./Build-UAT-Environment.bat"
